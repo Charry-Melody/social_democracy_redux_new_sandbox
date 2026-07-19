@@ -1273,9 +1273,9 @@ Unbanned the NSDAP.
 @sapd_formed
 go-to: miscparty
 view-if: sapd_formed == 0
-on-arrival: [!
+on-arrival: {!
 Q.sapd_formed = 1;
-!]
+!}
 
 Formed the SAPD.
 
