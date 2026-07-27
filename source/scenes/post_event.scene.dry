@@ -2331,6 +2331,12 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= 3/12;
         }
     }
+    if (Q.class_war && Q.capital_strike_seen && !Q.capital_flight) {
+        Q.workers_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/12;
+        Q.new_middle_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/10;
+        Q.old_middle_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/8;
+        Q.rural_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/8;
+    }
     if (Q.kpd_votes >= (25-(Q.socialism/10)-(Q.unemployed/10))) {
         Q.rfb_strength += (Q.unemployed_kpd_normalized*(Q.unemployed/100))/24;
         Q.rfb_militancy += (Q.workers_kpd_normalized/250)/24;

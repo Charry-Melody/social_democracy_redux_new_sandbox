@@ -12,6 +12,7 @@ In government, we have worked towards the socialization of the economy through t
 - @break_toleration: We will vote against, and bring down the government.
 - @nothing_to_be_done: There is nothing we can do.
 - @no_choice: We have no choice but to maintain toleration.
+- @fight: Defend the occupied factories by force!
 
 @break_toleration
 view-if: spd_toleration
@@ -41,3 +42,23 @@ subtitle: Our party will be incensed by this.
 on-arrival: left_dissent += 10; left_strength -= 5; socialism -= 4; capital_strike_progress -= 2; bourgeois_power += 0.05; unemployed += 3.5 if unemployed < 6; unemployed += 1.2 if works_councils < 3; workers -= 2 if nationalization_progress >= 2; budget += 3; works_program -= 1; workers_kpd += 2*(1-dissent); unemployed_kpd += 3*(1-dissent); new_middle_spd -= 2; new_middle_spd += 1 if new_middle_conscious; old_middle_spd -= 3; inflation -= 2; economic_growth -= 1.7 if economic_growth >= 5; kpd_relation -= 5
 
 We cannot afford to trigger new elections now, so we have no choice but to continue toleration. Unfortunately, many in our party do not see things the same way, and the KPD benefits from our seeming abandonment of our legacy.
+
+@fight
+view-if: factory_takeovers
+choose-if: (rb_militancy*(left_strength/100)) >= 0.1
+unavailable-subtitle: The Reichsbanner isn't sufficiently militant.
+on-arrival: reformist_dissent += 5
+
+Are we sure? This would mean obstruction of justice, at least in the eyes of the bourgeoisie and their courts. Even considering this option infuriates our reformist wing.
+
+- @fight_2: Yes, fight.
+- @break_toleration: We will vote against, and bring down the government.
+- @nothing_to_be_done: There is nothing we can do.
+- @no_choice: We have no choice but to maintain toleration.
+
+@fight_2
+on-arrival: old_middle_spd -= 5*bourgeois_power; new_middle_spd -= 3*bourgeois_power; rural_spd -= 3*bourgeois_power; old_middle_nsdap += 6; new_middle_nsdap += (5 - new_middle_conscious); rural_nsdap += (8 - land_reform); workers_nsdap += 4*(1-(socialism/100))*bourgeois_power; workers_spd -= workers_nsdap*(1-(socialism/100))*bourgeois_power; scab_power = sh_strength*sh_militancy; scab_power += sa_strength*sa_militancy; scab_power += reichswehr_strength*reichswehr_militancy*0.25; striker_power = rb_strength*rb_militancy*(1-dissent/2); striker_power += workers_spd_normalized*(2 - dissent)*(2 - unemployed/100)
+go-to: fight_2_win if striker_power >= scab_power; fight_2_loss if striker_power < scab_power
+
+@fight_2_win
+on-arrival: socialism += 2; 

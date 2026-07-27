@@ -79,11 +79,36 @@ view-if: spd_soviets
 
 With us in control of the councils, we have a variety of options.
 
+Council resources: [+ council_resources +]
+
 - @expand_reichstag: Expand cooperation with the Reichstag and avoid conflict.
+- @integrate_works_councils: Integrate the councils into the existing works councils as purely economic entities.
+- @self_dissolve_spd: Dissolve the councils from within, to end dual power.
 - @factory_takeovers: Utilize the councils to seize factories.
+- @mutual_aid: Use the councils to distribute mutual aid.
 - @militia: Utilize the councils to expand the military capacities of the workers.
 - @fund_councils: Divert government funds to prop up the councils.
 - @donate_councils: Donate SPD resources to the councils.
+
+@expand_reichstag
+choose-if: (not left_soviets and not kpd_included) or (spd_r+sapd_r+kpd_r >= 50)
+unavailable-subtitle: The current executive of the councils is unwilling to work with a bourgeois Reichstag.
+on-arrival: socialism -= 1 if kpd_r+spd_r+sapd_r < 50; reichstag_cooperation += 1; pro_republic += 2; kpd_relation -= 3 if kpd_r+spd_r+sapd_r < 50; left_dissent += 3 if kpd_r+spd_r+sapd_r < 50; bourgeois_power += 0.01 if bourgeois_power < 0.9 and kpd_r+spd_r+sapd_r < 50; capital_strike_progress -= 1 if capital_strike_progress >= 5 and kpd_r+spd_r+sapd_r < 50; ddp_relation += 3 if kpd_r+spd_r+sapd_r < 50; z_relation += 2 if kpd_r+spd_r+sapd_r < 50; dvp_relation += 2 if kpd_r+spd_r+sapd_r < 50
+
+We have expanded the cooperation of the councils with the Reichstag, reducing conflict over political authority, while also sidelining the councils somewhat in the process.
+
+@self_dissolve_spd
+view-if: not left_soviets and not kpd_included and reichstag_cooperation >= 3
+choose-if: dissolutionist_s >= left_coalition_s
+unavailable-subtitle: There is not majority support on the councils.
+on-arrival: soviets_exist = 0; socialism -= 3; pro_republic += 3; kpd_relation -= 15; left_dissent += 15; capital_strike_progress -= 1; capital_strike_progress -= 1 if capital_strike_progress >= 5; bourgeois_power += 0.02; ddp_relation += 5; dvp_relation += 5; z_relation += 5
+
+We have dissolved the councils, putting an end to the state of dual power between them and Reichstag, and causing much upheaval and complaint from our leftward flanks, especially from the KPD. Our actions have, however, put the bourgeoisie at ease.
+
+@factory_takeovers
+choose-if: not reformist_soviets and not neorevisionist_soviets and not bourgeois_included
+unavailable-subtitle: The current executive of the councils is unwilling to engage in such revolutionary activity.
+on-arrival: 
 
 @nothing
 view-if: spd_soviets
