@@ -218,7 +218,7 @@ Fascists have been taking increasingly violent actions around the occupied facto
 
 @establish_councils
 title: Establish workers' councils in occupied factories, to coordinate industrial action.
-view-if: factory_takeovers >= 1 and class_war >= 5 and not supreme_soviet
+view-if: factory_takeovers >= 1 and class_war >= 5 and not supreme_soviet and not soviets_exist
 max-visits: 1
 choose-if: resources >= 2 or (resources >= 1 and works_councils >= 3)
 subtitle: [? if works_councils < 3 : -2 resources ?][? if works_councils >= 3 : -1 resource ?]

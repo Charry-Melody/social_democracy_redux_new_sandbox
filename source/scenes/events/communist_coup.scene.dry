@@ -1,7 +1,7 @@
 title: [+ chancellor +] arrested
 subtitle: Coup plot averted, or coup in motion?
 new-page: true
-view-if: kpd_influence >= ((army_force+sa_force+sh_force)/10) and (interior_kpd_seen or (kpd_influence*rfb_force) >= 250) and kpd_influence >= (papen_chancellor_timer*3) and (rfb_force >= sa_force+army_force+sh_force) and not spd_in_government and not spd_caretaker and chancellor_party != "KPD"
+view-if: kpd_influence >= ((army_force+sa_force+sh_force)/10) and (interior_kpd_seen or (kpd_influence*rfb_force) >= 250) and kpd_influence >= (papen_chancellor_timer*3) and (rfb_force >= sa_force+army_force+sh_force) and not spd_in_government and not spd_caretaker and chancellor_party != "KPD" and chancellor_party != "SPD"
 tags: event
 max-visits: 1
 

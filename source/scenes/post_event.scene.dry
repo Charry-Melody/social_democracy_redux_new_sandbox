@@ -850,6 +850,11 @@ if (Q.month_actions >= 1) {
     }
     if ((Q.socialism/100) < (1-Q.bourgeois_power)) {
         Q.socialism += Q.socialism/120;
+        console.log(
+        "Socialism growth condition fired.",
+        "socialism =", Q.socialism,
+        "bourgeois_power =", Q.bourgeois_power
+        );
     }
     if (Q.socialism <= (Q.spd_votes+Q.kpd_votes)) {
         if (!Q.sapd_formed || (Q.sapd_formed && (Q.socialism <= ((Q.left_strength/100)*Q.spd_votes)+Q.sapd_votes+Q.kpd_votes))) {
@@ -2326,6 +2331,20 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= 3/12;
         }
     }
+    if (Q.class_war && Q.capital_strike_seen && !Q.capital_flight) {
+        Q.workers_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/12;
+        Q.new_middle_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/10;
+        Q.old_middle_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/8;
+        Q.rural_spd -= Q.class_war*(1-(Q.socialism/100))*(0.9+(Q.bourgeois_power/10))/8;
+    }
+    if (Q.kpd_votes >= (25-(Q.socialism/10)-(Q.unemployed/10))) {
+        Q.rfb_strength += (Q.unemployed_kpd_normalized*(Q.unemployed/100))/24;
+        Q.rfb_militancy += (Q.workers_kpd_normalized/250)/24;
+        if (!Q.rfb_banned) {
+            Q.rfb_strength += (Q.unemployed_kpd_normalized*(Q.unemployed/100))/24;
+            Q.rfb_militancy += (Q.workers_kpd_normalized/250)/24;
+        }
+    }
     if (Q.victory_republic && Q.kpd_relation >= 60 && Q.kpd_influence) {
         Q.rfb_strength += (Q.kpd_influence/4);
     }
@@ -2451,7 +2470,7 @@ if (Q.month_actions >= 1) {
         if (Q.in_left_front || Q.in_popular_front) {
             Q.army_relation_equilibrium -= Q.kpd_r;
         }
-        if (Q.reichsweh_minister_party != "I") {
+        if (Q.reichswehr_minister_party != "I") {
             Q.army_relation_equilibrium -= 10;
         }
         if (Q.spd_in_government) {
