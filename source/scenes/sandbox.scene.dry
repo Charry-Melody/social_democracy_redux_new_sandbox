@@ -1120,7 +1120,7 @@ Unbanned the RFB.
 - @raisepsstrength: Raise Postal Services Strength By 25,000
 - @lowerpsstrength: Lower Postal Services Strength
 - @raisepsloyalty: Raise Postal Services Loyalty
-- @raisepsloyalty: Lower Postal Services Loyalty
+- @lowerpsloyalty: Lower Postal Services Loyalty
 - @returnsandbox: Return To Sandbox Menu
 
 @raiserwstrength
