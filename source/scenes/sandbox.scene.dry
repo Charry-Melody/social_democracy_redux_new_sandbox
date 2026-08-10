@@ -1232,7 +1232,7 @@ Q.postmen -= 25;
 Lowered Postal Services strength by 25,000.
 
 @raisepsloyality
-go-to: editreichwehr
+go-to: editreichswehr
 on-arrival: {!
 Q.postal_loyalty += 0.2;
 !}
