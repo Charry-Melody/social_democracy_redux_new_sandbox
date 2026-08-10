@@ -1242,7 +1242,7 @@ Q.postal_loyalty += 0.2;
 !}
 
 
-@raisepsloyalty
+@lowerpsloyalty
 go-to: editreichswehr
 on-arrival: {!
 Q.postal_loyaity -= 0.2;
