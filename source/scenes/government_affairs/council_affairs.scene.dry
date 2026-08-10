@@ -81,13 +81,8 @@ With us in control of the councils, we have a variety of options.
 Council resources: [+ council_resources +]
 
 - @expand_reichstag: Expand cooperation with the Reichstag and avoid conflict.
-- @integrate_works_councils: Integrate the councils into the existing works councils as purely economic entities.
 - @self_dissolve_spd: Dissolve the councils from within, to end dual power.
 - @factory_takeovers: Utilize the councils to seize factories.
-- @mutual_aid: Use the councils to distribute mutual aid.
-- @militia: Utilize the councils to expand the military capacities of the workers.
-- @fund_councils: Divert government funds to prop up the councils.
-- @donate_councils: Donate SPD resources to the councils.
 
 @expand_reichstag
 choose-if: (not left_soviets and not kpd_included) or (spd_r+sapd_r+kpd_r >= 50)
