@@ -47,7 +47,6 @@ The KPD has used their position in the council to funnel funds and resources tow
 @pre_communist_revolution
 view-if: councils_initiative
 go-to: communist_revolution
-frequency-var: rfb_force
 
 @bourgeois_administration
 view-if: bourgeois_soviets
