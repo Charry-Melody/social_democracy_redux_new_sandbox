@@ -1222,7 +1222,6 @@ Lowered Interior Police loyalty.
 - @unban_kpd: Unban KPD
 - @ban_nsdap: Ban NSDAP
 - @unban_nsdap: Unban NSDAP
-- @sapd_formed: Form SAPD
 - @returnsandbox: Return To Sandbox Menu
 
 @allow_banning
